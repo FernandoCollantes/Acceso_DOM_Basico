@@ -13,13 +13,12 @@
 </head>
 
 <body>
-  <div class="container">
+  <div class="container1">
     <h1 id = "titulo">ACCESO AL DOM BÁSICO</h1>
     <p>Primeros ejercicios con manipulación del DOM.</p>
-    <button class="btn btn-primary d-block mx-auto">Haz clic aquí</button>
   </div>
   <script>
-    //1. ACCESO AL DOM BASICO
+    //=================1. ACCESO AL DOM BASICO ========================
     // Asigna un id al <h1> y cambia su texto usando getElementById
     const h1 = document.getElementById("titulo");
     h1.id = "Titulo";
@@ -29,12 +28,12 @@
      const parrafos = document.getElementsByTagName("p");
      parrafos[0].style.color = "blue";
 
-    //MODIFICACIÓN DE VARIOS ELEMENTOS.
+    //==================2.MODIFICACIÓN DE VARIOS ELEMENTOS.==================
     /*Crea tres párrafos con la clase texto.
     Usa getElementsByClassName para recorrerlos con un for y cambiar el color de fondo a
     gris.*/
    // Seleccionamos el contenedor donde los pondremos
-   const contenedor = document.querySelector(".container");
+   const contenedor = document.querySelector(".container1");// selecciona el div con clase container1
 
   // Crear tres párrafos dinámicamente
     for (let i = 1; i <= 3; i++) {
@@ -43,6 +42,12 @@
         p.textContent = `Este es el párrafo número ${i}`;  // texto dentro
         contenedor.appendChild(p);               // lo agrega al contenedor
     }
+    //Usar getElementsByClassName para recorrerlos con un for y cambiar el color de fondo a gris.
+    const textos = document.getElementsByClassName("texto");
+    for (let i = 0; i < textos.length; i++) {
+        textos[i].style.backgroundColor = "gray"; 
+    }
+    
     
  </script>
 </html>
