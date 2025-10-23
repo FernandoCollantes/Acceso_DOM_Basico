@@ -17,6 +17,7 @@
     <h1 id = "titulo">ACCESO AL DOM BÁSICO</h1>
     <p>Primeros ejercicios con manipulación del DOM.</p>
   </div>
+  
   <script>
     //=================1. ACCESO AL DOM BASICO ========================
     // Asigna un id al <h1> y cambia su texto usando getElementById
@@ -25,15 +26,15 @@
     document.getElementById('Titulo').textContent = 'Bienvenido al DOM ';
     
     // Cambiar el color del primer <p> usando getElementsByTagName
-     const parrafos = document.getElementsByTagName("p");
-     parrafos[0].style.color = "blue";
+    const parrafos = document.getElementsByTagName("p");
+    parrafos[0].style.color = "blue";
 
     //==================2.MODIFICACIÓN DE VARIOS ELEMENTOS.==================
     /*Crea tres párrafos con la clase texto.
     Usa getElementsByClassName para recorrerlos con un for y cambiar el color de fondo a
     gris.*/
    // Seleccionamos el contenedor donde los pondremos
-   const contenedor = document.querySelector(".container1");// selecciona el div con clase container1
+  const contenedor = document.querySelector(".container1");// selecciona el div con clase container1
 
   // Crear tres párrafos dinámicamente
     for (let i = 1; i <= 3; i++) {
@@ -47,7 +48,66 @@
     for (let i = 0; i < textos.length; i++) {
         textos[i].style.backgroundColor = "gray"; 
     }
-    
-    
- </script>
+    //==================3. USO DE QUERYSELECTOR ==================
+    //Usa querySelector para seleccionar el primer <div> con clase .caja y cambia su borde y fondo con style. 
+    const caja = document.querySelector(".container1"); 
+    caja.style.border = "2px solid red";
+    caja.style.backgroundColor = "lightgrey";
+
+    //======4. querySelectorAll y forEach ======
+    /*
+    Crea tres botones con clase btn-dom. Recógelos con querySelectorAll y cambia el texto de todos ellos a “DOM listo ”.*/
+    //primero creo un div para contener los botones
+    const contenedorBotones = document.createElement("div");
+    document.body.appendChild(contenedorBotones);//Asi los añadimos concreatamente al cuerpo.
+    for (let i = 1; i <= 3; i++) { //Asi creo los tres botones a la vez, con sus propiedades.
+      const boton = document.createElement("button");
+      boton.className = "btn-dom";
+      boton.textContent = `Botón ${i}`; // Texto inicial
+      contenedorBotones.appendChild(boton);
+      
+    }
+    const botonesDom = document.querySelectorAll(".btn-dom");
+    // 4. Recorrer la NodeList con forEach y cambiar el texto
+    // NOTA: Se usa forEach ya que querySelectorAll devuelve una NodeList, no un HTMLCollection
+    botonesDom.forEach(boton => {
+      boton.textContent = "DOM listo";
+      });
+
+    //==========5. Comparación entre colecciones vivas y estáticas==============
+    /*Crea una lista <ul id="lista"> con dos <li>.
+      Muestra por consola la diferencia entre getElementsByTagName("li") (viva) y
+      querySelectorAll("li") (estática) al agregar un nuevo elemento.
+    */
+    const contenedorColecciones = document.createElement("div");
+    document.body.appendChild(contenedorColecciones);
+    const ul = document.createElement("ul");
+    ul.id = "lista";
+    const li1 = document.createElement("li");
+    li1.textContent = "Elemento 1";
+    const li2 = document.createElement("li");
+    li2.textContent = "Elemento 2";
+    ul.appendChild(li1);
+    ul.appendChild(li2);
+    contenedorColecciones.appendChild(ul);
+    // Obtener colecciones
+    const coleccionViva = document.getElementsByTagName("li");
+    const coleccionEstatica = document.querySelectorAll("li");
+    console.log("Antes de agregar nuevo elemento:");
+    console.log("Colección viva (getElementsByTagName):", coleccionViva.length); // 2
+    console.log("Colección estática (querySelectorAll):", coleccionEstatica.length); // 2
+    // Agregar un nuevo elemento <li>
+    const li3 = document.createElement("li");
+    li3.textContent = "Elemento 3";
+    ul.appendChild(li3);
+    console.log("Después de agregar nuevo elemento:");
+    console.log("Colección viva (getElementsByTagName):", coleccionViva.length); // 3
+    console.log("Colección estática (querySelectorAll):", coleccionEstatica.length); // 2
+
+  
+  
+  
+
+  </script>
+</body>
 </html>
