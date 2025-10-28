@@ -104,10 +104,167 @@
     console.log("Colección viva (getElementsByTagName):", coleccionViva.length); // 3
     console.log("Colección estática (querySelectorAll):", coleccionEstatica.length); // 2
 
-  
-  
+  /*==============================================================================
+        6. Crear elementos dinámicamente
+      Usa createElement() para crear un <p> con texto "Creado dinámicamente" y añádelo al
+      body con appendChild().
+  ====================================================================================*/
+  const parrafoDinamico = document.createElement('p'); //creado solamente en memoria.
+  parrafoDinamico.textContent="Creado dinámicamente.";
+  document.body.appendChild(parrafoDinamico);//importante acordarse de añadirlo al doc antes que al body
   
 
+  /*
+        7. Crear nodos de texto
+        Crea un <div id="contenedor">.
+        Genera un nodo de texto con createTextNode() y añádelo dentro del div.
+  */
+ //crear el div
+  const divNode = document.createElement("div");
+  divNode.id="contenedor";
+  //crear el nodo de texto
+  const nodeText = document.createTextNode("Contenido textual sin etiquetas HTML, creado con textNode.");
+  //añadir el nodo al div
+  divNode.appendChild(nodeText);
+  //añadir div al body
+  document.body.appendChild(divNode);
+
+  /*
+        8. Añadir atributos a un elemento
+      Crea una imagen con createElement("img") y añade atributos con setAttribute():
+      ● src → una URL de imagen de prueba.
+      ● alt → “Imagen generada por JS”.
+  */
+  // Crear el elemento img
+        const imagen = document.createElement("img");
+        
+        // Añadir atributos con setAttribute()
+        imagen.setAttribute("src", "https://www.shutterstock.com/shutterstock/videos/1108567237/thumb/1.jpg?ip=x480/2x2");
+        imagen.setAttribute("alt", "Imagen generada por JS");
+        
+        // Añadir la imagen al body
+        document.body.appendChild(imagen);
+  /*
+          9. Crear estructura completa
+  Crea dinámicamente una tarjeta de Bootstrap (card) con:
+  ● Título (h5)
+  ● Texto (p)
+  ● Botón (button.btn.btn-primary)
+  Todos generados desde JavaScript y añadidos dentro de un div.container.
+  */
+ // Crear el contenedor principal
+        const container = document.createElement("div");
+        container.className = "container mt-5";
+        
+        // Crear la card
+        const card = document.createElement("div");
+        card.className = "card";
+        card.style.width = "18rem";
+        
+        // Crear el body de la card
+        const cardBody = document.createElement("div");
+        cardBody.className = "card-body";
+        
+        // Crear el título (h5)
+        const titulo = document.createElement("h5");
+        titulo.className = "card-title";
+        titulo.textContent = "Título de la tarjeta";
+        
+        // Crear el texto (p)
+        const texto = document.createElement("p");
+        texto.className = "card-text";
+        texto.textContent = "Este es un texto de ejemplo para la tarjeta creada dinámicamente con JavaScript.";
+        
+        // Crear el botón
+        const boton = document.createElement("button");
+        boton.className = "btn btn-primary";
+        boton.textContent = "Ir a algún lugar";
+        
+        // Añadir evento al botón (opcional)
+        boton.addEventListener("click", function() {
+            alert("¡Botón clickeado!");
+        });
+        
+        // Construir la estructura (de dentro hacia fuera)
+        cardBody.appendChild(titulo);
+        cardBody.appendChild(texto);
+        cardBody.appendChild(boton);
+        
+        card.appendChild(cardBody);
+        container.appendChild(card);
+        
+        // Añadir todo al body
+        document.body.appendChild(container);
+
+        /*
+        10. Insertar elementos en distintas posiciones
+        Crea una lista y usa:
+        ● append() para añadir al final,
+        ● prepend() para añadir al inicio,
+        ● before() y after() para colocar nuevos elementos fuera del <ul>.
+        */
+        // Crear la lista inicial con algunos elementos
+        // Cambiar "ul" por "ulMetodos" para evitar conflicto
+// Crear la lista inicial con algunos elementos
+const ulMetodos = document.createElement("ul");
+ulMetodos.id = "mi-lista";
+
+// Crear elementos iniciales (nombres diferentes)
+const liMetodo1 = document.createElement("li");
+liMetodo1.textContent = "Elemento original 1";
+
+const liMetodo2 = document.createElement("li");
+liMetodo2.textContent = "Elemento original 2";
+
+const liMetodo3 = document.createElement("li");
+liMetodo3.textContent = "Elemento original 3";
+
+// Añadir elementos iniciales a la lista
+ulMetodos.appendChild(liMetodo1);
+ulMetodos.appendChild(liMetodo2);
+ulMetodos.appendChild(liMetodo3);
+
+// Añadir la lista al body
+document.body.appendChild(ulMetodos);
+
+// ============================================
+// 1. append() - Añadir al FINAL de la lista
+// ============================================
+const liAppend = document.createElement("li");
+liAppend.textContent = "Añadido al FINAL con append()";
+liAppend.style.color = "blue";
+liAppend.style.fontWeight = "bold";
+ulMetodos.append(liAppend);
+
+// ============================================
+// 2. prepend() - Añadir al INICIO de la lista
+// ============================================
+const liPrepend = document.createElement("li");
+liPrepend.textContent = "Añadido al INICIO con prepend()";
+liPrepend.style.color = "green";
+liPrepend.style.fontWeight = "bold";
+ulMetodos.prepend(liPrepend);
+
+// ============================================
+// 3. before() - Añadir ANTES del <ul>
+// ============================================
+const parrafoBefore = document.createElement("p");
+parrafoBefore.textContent = "Este párrafo está ANTES del <ul> usando before()";
+parrafoBefore.style.color = "red";
+parrafoBefore.style.fontStyle = "italic";
+ulMetodos.before(parrafoBefore);
+
+// ============================================
+// 4. after() - Añadir DESPUÉS del <ul>
+// ============================================
+const parrafoAfter = document.createElement("p");
+parrafoAfter.textContent = "Este párrafo está DESPUÉS del <ul> usando after()";
+parrafoAfter.style.color = "purple";
+parrafoAfter.style.fontStyle = "italic";
+ulMetodos.after(parrafoAfter);
+
+        
+        
   </script>
 </body>
 </html>
