@@ -262,8 +262,78 @@ parrafoAfter.textContent = "Este párrafo está DESPUÉS del <ul> usando after()
 parrafoAfter.style.color = "purple";
 parrafoAfter.style.fontStyle = "italic";
 ulMetodos.after(parrafoAfter);
+/*====================================================
+  11. Reemplazar y eliminar
+  Crea un párrafo <p> y un botón “Eliminar”.
+  Al hacer clic, usa remove() para eliminar el párrafo y muestra un mensaje por consola.
 
-        
+  Luego, crea un segundo botón “Reemplazar” que use replaceWith() para cambiar un
+  elemento por otro.
+*/
+// Crear un contenedor para este ejercicio
+const contenedorEjercicio11 = document.createElement("div");
+contenedorEjercicio11.className = "container mt-4 p-3 border";
+document.body.appendChild(contenedorEjercicio11);
+
+// Crear un título para el ejercicio
+const tituloEjercicio = document.createElement("h3");
+tituloEjercicio.textContent = "Ejercicio 11: Eliminar y Reemplazar";
+contenedorEjercicio11.appendChild(tituloEjercicio);
+
+// ============================================
+// PARTE 1: Crear párrafo y botón "Eliminar"
+// ============================================
+const parrafoEliminar = document.createElement("p");
+parrafoEliminar.textContent = "Este párrafo puede ser eliminado";
+parrafoEliminar.style.backgroundColor = "lightblue";
+parrafoEliminar.style.padding = "10px";
+parrafoEliminar.style.marginTop = "10px";
+contenedorEjercicio11.appendChild(parrafoEliminar);
+
+const botonEliminar = document.createElement("button");
+botonEliminar.textContent = "Eliminar";
+botonEliminar.className = "btn btn-danger me-2";
+contenedorEjercicio11.appendChild(botonEliminar);
+
+// Evento para eliminar el párrafo
+botonEliminar.addEventListener("click", function() {
+    parrafoEliminar.remove(); // Elimina el elemento del DOM
+    console.log("El párrafo ha sido eliminado del DOM");
+    botonEliminar.disabled = true; // Desactivar el botón después de eliminar
+    botonEliminar.textContent = "Ya eliminado";
+});
+
+// ============================================
+// PARTE 2: Crear elemento y botón "Reemplazar"
+// ============================================
+const parrafoReemplazar = document.createElement("p");
+parrafoReemplazar.textContent = "Este párrafo será reemplazado";
+parrafoReemplazar.style.backgroundColor = "lightyellow";
+parrafoReemplazar.style.padding = "10px";
+parrafoReemplazar.style.marginTop = "10px";
+contenedorEjercicio11.appendChild(parrafoReemplazar);
+
+const botonReemplazar = document.createElement("button");
+botonReemplazar.textContent = "Reemplazar";
+botonReemplazar.className = "btn btn-warning";
+contenedorEjercicio11.appendChild(botonReemplazar);
+
+// Evento para reemplazar el párrafo
+botonReemplazar.addEventListener("click", function() {
+    // Crear el nuevo elemento que reemplazará al párrafo
+    const nuevoElemento = document.createElement("div");
+    nuevoElemento.innerHTML = "<strong>¡Elemento reemplazado con éxito!</strong>";
+    nuevoElemento.style.backgroundColor = "lightgreen";
+    nuevoElemento.style.padding = "10px";
+    nuevoElemento.style.borderRadius = "5px";
+    
+    // Reemplazar el párrafo con el nuevo elemento
+    parrafoReemplazar.replaceWith(nuevoElemento);
+    console.log("El párrafo ha sido reemplazado por un nuevo elemento");
+    
+    botonReemplazar.disabled = true; // Desactivar el botón después de reemplazar
+    botonReemplazar.textContent = "Ya reemplazado";
+});
         
   </script>
 </body>
