@@ -334,6 +334,34 @@ botonReemplazar.addEventListener("click", function() {
     botonReemplazar.disabled = true; // Desactivar el botón después de reemplazar
     botonReemplazar.textContent = "Ya reemplazado";
 });
+    /*================================12. Clonar elementos==================================
+          Crea una tarjeta de Bootstrap con una imagen y texto.
+          Añade un botón “Clonar tarjeta” que use cloneNode(true) para duplicar la tarjeta y cambiar
+          el texto del clon.*/
+
+  // Tarjeta bootstrap>
+  //creo un contenedor para la tarjeta
+  const contenedorTarjeta = document.createElement('div');
+  contenedorTarjeta.id='contenedorTarjetas';//con un id para poder identificarlo
+  const tarjeta = document.createElement('div');
+  tarjeta.classList.add('card');
+  tarjeta.style.width = '18rem';
+  //crear la tarjeta
+
+  //contenido de la tarjeta con .innerHTML
+  tarjeta.innerHTML= `
+    <img src="https://cdn.raiolanetworks.com/blog/wp-content/uploads/portada-3.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">tarjeta de la Bootstrap</h5>
+      <p class="card-text">ejemplo rápido de una tarjeta</p>
+      <a href="#" class="btn btn-primary">Clonar tarjeta.</a>
+    </div>
+  </div>`;
+  //meter la tarjeta en el contenedor
+  contenedorTarjeta.appendChild(tarjeta);
+  //añadir contenedor al body
+  document.body.appendChild(contenedorTarjeta);
+
         
   </script>
 </body>
