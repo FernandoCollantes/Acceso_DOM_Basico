@@ -19,8 +19,10 @@
   </div>
   
   <script>
-    //=================1. ACCESO AL DOM BASICO ========================
+
+    //==================== 1. ACCESO AL DOM BASICO===================================== 
     // Asigna un id al <h1> y cambia su texto usando getElementById
+
     const h1 = document.getElementById("titulo");
     h1.id = "Titulo";
     document.getElementById('Titulo').textContent = 'Bienvenido al DOM ';
@@ -29,12 +31,13 @@
     const parrafos = document.getElementsByTagName("p");
     parrafos[0].style.color = "blue";
 
-    //==================2.MODIFICACIÓN DE VARIOS ELEMENTOS.==================
+    //=======================2.MODIFICACIÓN DE VARIOS ELEMENTOS.========================
     /*Crea tres párrafos con la clase texto.
     Usa getElementsByClassName para recorrerlos con un for y cambiar el color de fondo a
     gris.*/
+
    // Seleccionamos el contenedor donde los pondremos
-  const contenedor = document.querySelector(".container1");// selecciona el div con clase container1
+    const contenedor = document.querySelector(".container1");// selecciona el div con clase container1
 
   // Crear tres párrafos dinámicamente
     for (let i = 1; i <= 3; i++) {
@@ -48,13 +51,13 @@
     for (let i = 0; i < textos.length; i++) {
         textos[i].style.backgroundColor = "gray"; 
     }
-    //==================3. USO DE QUERYSELECTOR ==================
+    //========================3. USO DE QUERYSELECTOR ===================================
     //Usa querySelector para seleccionar el primer <div> con clase .caja y cambia su borde y fondo con style. 
     const caja = document.querySelector(".container1"); 
     caja.style.border = "2px solid red";
     caja.style.backgroundColor = "lightgrey";
 
-    //======4. querySelectorAll y forEach ======
+    //========================4. querySelectorAll y forEach ==============================
     /*
     Crea tres botones con clase btn-dom. Recógelos con querySelectorAll y cambia el texto de todos ellos a “DOM listo ”.*/
     //primero creo un div para contener los botones
@@ -68,13 +71,13 @@
       
     }
     const botonesDom = document.querySelectorAll(".btn-dom");
-    // 4. Recorrer la NodeList con forEach y cambiar el texto
+    // Recorrer la NodeList con forEach y cambiar el texto
     // NOTA: Se usa forEach ya que querySelectorAll devuelve una NodeList, no un HTMLCollection
     botonesDom.forEach(boton => {
       boton.textContent = "DOM listo";
       });
 
-    //==========5. Comparación entre colecciones vivas y estáticas==============
+    //=========================5. Comparación entre colecciones vivas y estáticas===================
     /*Crea una lista <ul id="lista"> con dos <li>.
       Muestra por consola la diferencia entre getElementsByTagName("li") (viva) y
       querySelectorAll("li") (estática) al agregar un nuevo elemento.
@@ -104,18 +107,16 @@
     console.log("Colección viva (getElementsByTagName):", coleccionViva.length); // 3
     console.log("Colección estática (querySelectorAll):", coleccionEstatica.length); // 2
 
-  /*==============================================================================
-        6. Crear elementos dinámicamente
+  /*=======================6. Crear elementos dinámicamente================================
       Usa createElement() para crear un <p> con texto "Creado dinámicamente" y añádelo al
       body con appendChild().
-  ====================================================================================*/
+  */
   const parrafoDinamico = document.createElement('p'); //creado solamente en memoria.
   parrafoDinamico.textContent="Creado dinámicamente.";
   document.body.appendChild(parrafoDinamico);//importante acordarse de añadirlo al doc antes que al body
   
 
-  /*
-        7. Crear nodos de texto
+  /*====================================7. Crear nodos de texto================================
         Crea un <div id="contenedor">.
         Genera un nodo de texto con createTextNode() y añádelo dentro del div.
   */
@@ -129,8 +130,7 @@
   //añadir div al body
   document.body.appendChild(divNode);
 
-  /*
-        8. Añadir atributos a un elemento
+  /*======================================8. Añadir atributos a un elemento===============================
       Crea una imagen con createElement("img") y añade atributos con setAttribute():
       ● src → una URL de imagen de prueba.
       ● alt → “Imagen generada por JS”.
@@ -144,8 +144,7 @@
         
         // Añadir la imagen al body
         document.body.appendChild(imagen);
-  /*
-          9. Crear estructura completa
+  /*==================================9. Crear estructura completa=======================================
   Crea dinámicamente una tarjeta de Bootstrap (card) con:
   ● Título (h5)
   ● Texto (p)
@@ -196,8 +195,7 @@
         // Añadir todo al body
         document.body.appendChild(container);
 
-        /*
-        10. Insertar elementos en distintas posiciones
+        /*================================10. Insertar elementos en distintas posiciones================================
         Crea una lista y usa:
         ● append() para añadir al final,
         ● prepend() para añadir al inicio,
@@ -227,43 +225,44 @@ ulMetodos.appendChild(liMetodo3);
 // Añadir la lista al body
 document.body.appendChild(ulMetodos);
 
-// ============================================
+
 // 1. append() - Añadir al FINAL de la lista
-// ============================================
+
 const liAppend = document.createElement("li");
 liAppend.textContent = "Añadido al FINAL con append()";
 liAppend.style.color = "blue";
 liAppend.style.fontWeight = "bold";
 ulMetodos.append(liAppend);
 
-// ============================================
+
 // 2. prepend() - Añadir al INICIO de la lista
-// ============================================
+
 const liPrepend = document.createElement("li");
 liPrepend.textContent = "Añadido al INICIO con prepend()";
 liPrepend.style.color = "green";
 liPrepend.style.fontWeight = "bold";
 ulMetodos.prepend(liPrepend);
 
-// ============================================
+
 // 3. before() - Añadir ANTES del <ul>
-// ============================================
+
 const parrafoBefore = document.createElement("p");
 parrafoBefore.textContent = "Este párrafo está ANTES del <ul> usando before()";
 parrafoBefore.style.color = "red";
 parrafoBefore.style.fontStyle = "italic";
 ulMetodos.before(parrafoBefore);
 
-// ============================================
+
 // 4. after() - Añadir DESPUÉS del <ul>
-// ============================================
+
 const parrafoAfter = document.createElement("p");
 parrafoAfter.textContent = "Este párrafo está DESPUÉS del <ul> usando after()";
 parrafoAfter.style.color = "purple";
 parrafoAfter.style.fontStyle = "italic";
 ulMetodos.after(parrafoAfter);
-/*====================================================
-  11. Reemplazar y eliminar
+
+
+/*==========================================11. Reemplazar y eliminar===============================
   Crea un párrafo <p> y un botón “Eliminar”.
   Al hacer clic, usa remove() para eliminar el párrafo y muestra un mensaje por consola.
 
@@ -280,9 +279,9 @@ const tituloEjercicio = document.createElement("h3");
 tituloEjercicio.textContent = "Ejercicio 11: Eliminar y Reemplazar";
 contenedorEjercicio11.appendChild(tituloEjercicio);
 
-// ============================================
+
 // PARTE 1: Crear párrafo y botón "Eliminar"
-// ============================================
+
 const parrafoEliminar = document.createElement("p");
 parrafoEliminar.textContent = "Este párrafo puede ser eliminado";
 parrafoEliminar.style.backgroundColor = "lightblue";
@@ -303,9 +302,9 @@ botonEliminar.addEventListener("click", function() {
     botonEliminar.textContent = "Ya eliminado";
 });
 
-// ============================================
+
 // PARTE 2: Crear elemento y botón "Reemplazar"
-// ============================================
+
 const parrafoReemplazar = document.createElement("p");
 parrafoReemplazar.textContent = "Este párrafo será reemplazado";
 parrafoReemplazar.style.backgroundColor = "lightyellow";
@@ -334,7 +333,9 @@ botonReemplazar.addEventListener("click", function() {
     botonReemplazar.disabled = true; // Desactivar el botón después de reemplazar
     botonReemplazar.textContent = "Ya reemplazado";
 });
-    /*================================12. Clonar elementos==================================
+
+
+/*================================12. Clonar elementos==================================
           Crea una tarjeta de Bootstrap con una imagen y texto.
           Añade un botón “Clonar tarjeta” que use cloneNode(true) para duplicar la tarjeta y cambiar
           el texto del clon.*/
@@ -346,6 +347,8 @@ botonReemplazar.addEventListener("click", function() {
   const tarjeta = document.createElement('div');
   tarjeta.classList.add('card');
   tarjeta.style.width = '18rem';
+  document.body.appendChild(contenedorTarjeta);
+
   //crear la tarjeta
 
   //contenido de la tarjeta con .innerHTML
@@ -360,9 +363,424 @@ botonReemplazar.addEventListener("click", function() {
   //meter la tarjeta en el contenedor
   contenedorTarjeta.appendChild(tarjeta);
   //añadir contenedor al body
-  document.body.appendChild(contenedorTarjeta);
+ // Función para clonar
+  tarjeta.querySelector('.btn').addEventListener('click', (e) => {
+    e.preventDefault(); // evitar salto de página
+    const clon = tarjeta.cloneNode(true); // clonar todo el nodo
+    clon.querySelector('.card-title').textContent = 'Tarjeta clonada';
+    clon.querySelector('.card-text').textContent = 'Esta es una copia de la tarjeta original';
+    contenedorTarjeta.appendChild(clon);
 
+    // Reasignar el evento al botón del clon
+    clon.querySelector('.btn').addEventListener('click', (e) => {
+      e.preventDefault();
+      const nuevoClon = clon.cloneNode(true);
+      nuevoClon.querySelector('.card-title').textContent = 'Otra tarjeta clonada';
+      nuevoClon.querySelector('.card-text').textContent = 'Clon del clon';
+      contenedorTarjeta.appendChild(nuevoClon);
+    });
+  });
+
+
+  /*=================== 13. Crear lista dinámica con botón==================================
+        Crea un botón “Agregar elemento” que añada un nuevo <li> a una lista cada vez que se
+        pulsa.
+  */
+  // Crear un contenedor para el ejercicio 13
+  const contenedorEjercicio13 = document.createElement("div");
+  contenedorEjercicio13.className = "container mt-4 p-3 border";
+  document.body.appendChild(contenedorEjercicio13);
+
+  // Título del ejercicio
+  const titulo13 = document.createElement("h3");
+  titulo13.textContent = "Ejercicio 13: Lista dinámica con botón";
+  contenedorEjercicio13.appendChild(titulo13);
+
+  // Crear la lista
+  const listaDinamica = document.createElement("ul");
+  listaDinamica.id = "listaDinamica";
+  listaDinamica.className = "list-group my-3";
+  contenedorEjercicio13.appendChild(listaDinamica);
+
+  // Crear el botón para agregar elementos
+  const botonAgregar = document.createElement("button");
+  botonAgregar.textContent = "Agregar elemento";
+  botonAgregar.className = "btn btn-success";
+  contenedorEjercicio13.appendChild(botonAgregar);
+
+  // Contador para numerar los elementos
+  let contador = 1;
+
+  // Evento del botón
+  botonAgregar.addEventListener("click", () => {
+    const nuevoElemento = document.createElement("li");
+    nuevoElemento.className = "list-group-item";
+    nuevoElemento.textContent = `Elemento ${contador}`;
+    listaDinamica.appendChild(nuevoElemento);
+    contador++;
+  });
+
+  /*============================14. Eliminar último elemento===============================
+Usa removeChild() o lastElementChild.remove() para eliminar el último elemento de la lista
+creada en el ejercicio anterior.
+  */
+// Crear contenedor para el ejercicio 14
+  const contenedorEjercicio14 = document.createElement("div");
+  contenedorEjercicio14.className = "container mt-4 p-3 border";
+  document.body.appendChild(contenedorEjercicio14);
+
+  // Título del ejercicio
+  const titulo14 = document.createElement("h3");
+  titulo14.textContent = "Ejercicio 14: Eliminar último elemento de la lista";
+  contenedorEjercicio14.appendChild(titulo14);
+
+  // Crear botón para eliminar el último elemento
+  const botonEliminarUltimo = document.createElement("button");
+  botonEliminarUltimo.textContent = "Eliminar último elemento";
+  botonEliminarUltimo.className = "btn btn-danger";
+  contenedorEjercicio14.appendChild(botonEliminarUltimo);
+
+  // Evento para eliminar el último elemento
+  botonEliminarUltimo.addEventListener("click", () => {
+    const lista = document.getElementById("listaDinamica");
+    if (lista.lastElementChild) {
+      lista.lastElementChild.remove(); // también se podría usar lista.removeChild(lista.lastElementChild)
+      console.log("Último elemento eliminado correctamente");
+    } else {
+      console.log("No hay elementos para eliminar");
+      alert("No hay más elementos en la lista para eliminar.");
+    }
+  });
+
+
+  /*=============================15. Recorrer colección y modificar====================================
+Selecciona todos los elementos de una lista con querySelectorAll(".item")
+
+Usa forEach() para numerarlos automáticamente:
+
+Ejemplo: Elemento 1, Elemento 2, Elemento 3...*/
+
+// Crear contenedor para el ejercicio 15
+  const contenedorEjercicio15 = document.createElement("div");
+  contenedorEjercicio15.className = "container mt-4 p-3 border";
+  document.body.appendChild(contenedorEjercicio15);
+
+  // Título del ejercicio
+  const titulo15 = document.createElement("h3");
+  titulo15.textContent = "Ejercicio 15: Numerar automáticamente los elementos";
+  contenedorEjercicio15.appendChild(titulo15);
+
+  // Crear lista con clase "item" para este ejercicio
+  const lista15 = document.createElement("ul");
+  lista15.id = "lista15";
+  lista15.className = "list-group my-3";
+  contenedorEjercicio15.appendChild(lista15);
+
+  // Agregar algunos elementos iniciales
+  for (let i = 0; i < 5; i++) {
+    const li = document.createElement("li");
+    li.className = "list-group-item item"; // importante la clase "item"
+    li.textContent = "Elemento";
+    lista15.appendChild(li);
+  }
+
+  // Seleccionar todos los elementos con la clase "item"
+  const items = document.querySelectorAll(".item");
+
+  // Recorrer con forEach y numerar automáticamente
+  items.forEach((item, index) => {
+    item.textContent = `Elemento ${index + 1}`;
+  });
+
+
+  /*================================17. Mostrar datos de API JSONPlaceholder==============================
+Usa fetch("https://jsonplaceholder.typicode.com/users")
+
+Convierte la respuesta con .json()
+
+Muestra los name y email de cada usuario en una lista <ul> generada dinámicamente.
+  
+  */
+
+ // Crear contenedor para el ejercicio 17
+  const contenedorEjercicio17 = document.createElement("div");
+  contenedorEjercicio17.className = "container mt-4 p-3 border";
+  document.body.appendChild(contenedorEjercicio17);
+
+  // Título del ejercicio
+  const titulo17 = document.createElement("h3");
+  titulo17.textContent = "Ejercicio 17: Mostrar datos de API JSONPlaceholder";
+  contenedorEjercicio17.appendChild(titulo17);
+
+  // Crear lista para mostrar los usuarios
+  const listaUsuarios = document.createElement("ul");
+  listaUsuarios.id = "listaUsuarios";
+  listaUsuarios.className = "list-group my-3";
+  contenedorEjercicio17.appendChild(listaUsuarios);
+
+  // Llamada a la API
+  fetch("https://jsonplaceholder.typicode.com/users")
+    .then(response => response.json())
+    .then(data => {
+      data.forEach(usuario => {
+        const li = document.createElement("li");
+        li.className = "list-group-item";
+        li.textContent = `${usuario.name} - ${usuario.email}`;
+        listaUsuarios.appendChild(li);
+      });
+    })
+    .catch(error => {
+      console.error("Error al obtener los usuarios:", error);
+      const liError = document.createElement("li");
+      liError.className = "list-group-item text-danger";
+      liError.textContent = "Error al cargar los usuarios.";
+      listaUsuarios.appendChild(liError);
+    });
+
+
+/*=========================18. Mostrar datos anidados de JSON================================
+Usando la misma API, muestra una tabla con name, email y address.city de cada usuario.
+Usa table, thead y tbody generados con createElement().
+
+*/
+// Crear contenedor para el ejercicio 18
+  const contenedorEjercicio18 = document.createElement("div");
+  contenedorEjercicio18.className = "container mt-4 p-3 border";
+  document.body.appendChild(contenedorEjercicio18);
+
+  // Título del ejercicio
+  const titulo18 = document.createElement("h3");
+  titulo18.textContent = "Ejercicio 18: Mostrar datos anidados en tabla";
+  contenedorEjercicio18.appendChild(titulo18);
+
+  // Crear la tabla
+  const tabla = document.createElement("table");
+  tabla.className = "table table-striped table-bordered mt-3";
+
+  // Crear encabezado
+  const thead = document.createElement("thead");
+  const filaHead = document.createElement("tr");
+
+  ["Nombre", "Email", "Ciudad"].forEach(texto => {
+    const th = document.createElement("th");
+    th.textContent = texto;
+    filaHead.appendChild(th);
+  });
+
+  thead.appendChild(filaHead);
+  tabla.appendChild(thead);
+
+  // Crear cuerpo de la tabla
+  const tbody = document.createElement("tbody");
+  tabla.appendChild(tbody);
+
+  // Añadir la tabla al contenedor
+  contenedorEjercicio18.appendChild(tabla);
+
+  // Llamada a la API
+  fetch("https://jsonplaceholder.typicode.com/users")
+    .then(response => response.json())
+    .then(data => {
+      data.forEach(usuario => {
+        const fila = document.createElement("tr");
+
+        const tdNombre = document.createElement("td");
+        tdNombre.textContent = usuario.name;
+        fila.appendChild(tdNombre);
+
+        const tdEmail = document.createElement("td");
+        tdEmail.textContent = usuario.email;
+        fila.appendChild(tdEmail);
+
+        const tdCiudad = document.createElement("td");
+        tdCiudad.textContent = usuario.address.city;
+        fila.appendChild(tdCiudad);
+
+        tbody.appendChild(fila);
+      });
+    })
+    .catch(error => {
+      console.error("Error al obtener los usuarios:", error);
+      const filaError = document.createElement("tr");
+      const tdError = document.createElement("td");
+      tdError.colSpan = 3;
+      tdError.className = "text-danger";
+      tdError.textContent = "Error al cargar los datos.";
+      filaError.appendChild(tdError);
+      tbody.appendChild(filaError);
+    });
         
+
+    /*================================19. Filtrar y mostrar datos====================================
+    Filtra los usuarios cuya dirección termine en .biz y muéstralos en tarjetas Bootstrap.
+    */
+
+    // Crear contenedor para el ejercicio 19
+  const contenedorEjercicio19 = document.createElement("div");
+  contenedorEjercicio19.className = "container mt-4 p-3 border";
+  document.body.appendChild(contenedorEjercicio19);
+
+  // Título del ejercicio
+  const titulo19 = document.createElement("h3");
+  titulo19.textContent = "Ejercicio 19: Filtrar usuarios .biz y mostrar en tarjetas";
+  contenedorEjercicio19.appendChild(titulo19);
+
+  // Contenedor de tarjetas
+  const contenedorTarjetas19 = document.createElement("div");
+  contenedorTarjetas19.className = "d-flex flex-wrap gap-3 mt-3";
+  contenedorEjercicio19.appendChild(contenedorTarjetas19);
+
+  // Llamada a la API
+  fetch("https://jsonplaceholder.typicode.com/users")
+    .then(response => response.json())
+    .then(data => {
+      // Filtrar usuarios cuyo email termine en ".biz"
+      const usuariosBiz = data.filter(usuario => usuario.email.endsWith(".biz"));
+
+      if (usuariosBiz.length === 0) {
+        const mensaje = document.createElement("p");
+        mensaje.textContent = "No hay usuarios con email terminado en .biz";
+        contenedorTarjetas19.appendChild(mensaje);
+        return;
+      }
+
+      // Crear tarjetas para cada usuario filtrado
+      usuariosBiz.forEach(usuario => {
+        const tarjeta = document.createElement("div");
+        tarjeta.className = "card";
+        tarjeta.style.width = "18rem";
+
+        tarjeta.innerHTML = `
+          <div class="card-body">
+            <h5 class="card-title">${usuario.name}</h5>
+            <p class="card-text">Email: ${usuario.email}</p>
+            <p class="card-text">Ciudad: ${usuario.address.city}</p>
+          </div>
+        `;
+
+        contenedorTarjetas19.appendChild(tarjeta);
+      });
+    })
+    .catch(error => {
+      console.error("Error al obtener los usuarios:", error);
+      const mensajeError = document.createElement("p");
+      mensajeError.className = "text-danger";
+      mensajeError.textContent = "Error al cargar los datos.";
+      contenedorTarjetas19.appendChild(mensajeError);
+    });
+
+    /*==========================20. Ejercicio final: mini “visor de usuarios”==============================
+      Combina todo lo aprendido:
+      1. Un botón “Cargar usuarios”.
+      2. Al pulsarlo, realiza un fetch() a https://jsonplaceholder.typicode.com/users.
+      3. Muestra tarjetas (card) con nombre, correo, y ciudad.
+      4. Incluye un botón dentro de cada tarjeta para eliminarla del DOM.
+      5. Incluye otro botón general para clonar el último usuario mostrado.
+
+      Usa createElement(), appendChild(), remove(), cloneNode(), y Bootstrap para los estilos.
+    
+    */
+  // Contenedor principal 
+  const contenedorEjercicio20 = document.createElement("div");
+  contenedorEjercicio20.className = "container mt-4 p-3 border";
+  document.body.appendChild(contenedorEjercicio20);
+
+  // Título del ejercicio
+  const titulo20 = document.createElement("h3");
+  titulo20.textContent = "Ejercicio 20: Mini visor de usuarios";
+  contenedorEjercicio20.appendChild(titulo20);
+
+  // Botón para cargar usuarios
+  const botonCargar = document.createElement("button");
+  botonCargar.textContent = "Cargar usuarios";
+  botonCargar.className = "btn btn-primary me-2";
+  contenedorEjercicio20.appendChild(botonCargar);
+
+  // Botón para clonar el último usuario
+  const botonClonarUltimo = document.createElement("button");
+  botonClonarUltimo.textContent = "Clonar último usuario";
+  botonClonarUltimo.className = "btn btn-success";
+  contenedorEjercicio20.appendChild(botonClonarUltimo);
+
+  // Contenedor de tarjetas
+  const contenedorTarjetas20 = document.createElement("div");
+  contenedorTarjetas20.className = "d-flex flex-wrap gap-3 mt-3";
+  contenedorEjercicio20.appendChild(contenedorTarjetas20);
+
+  let usuariosCargados = []; // Para almacenar las tarjetas cargadas
+
+  // Función para crear una tarjeta de usuario
+  function crearTarjeta(usuario) {
+    const tarjeta = document.createElement("div");
+    tarjeta.className = "card";
+    tarjeta.style.width = "18rem";
+
+    const cardBody = document.createElement("div");
+    cardBody.className = "card-body";
+
+    const titulo = document.createElement("h5");
+    titulo.className = "card-title";
+    titulo.textContent = usuario.name;
+
+    const email = document.createElement("p");
+    email.className = "card-text";
+    email.textContent = `Email: ${usuario.email}`;
+
+    const ciudad = document.createElement("p");
+    ciudad.className = "card-text";
+    ciudad.textContent = `Ciudad: ${usuario.address.city}`;
+
+    // Botón eliminar
+    const botonEliminar = document.createElement("button");
+    botonEliminar.className = "btn btn-danger me-2";
+    botonEliminar.textContent = "Eliminar";
+    botonEliminar.addEventListener("click", () => {
+      tarjeta.remove();
+    });
+
+    cardBody.appendChild(titulo);
+    cardBody.appendChild(email);
+    cardBody.appendChild(ciudad);
+    cardBody.appendChild(botonEliminar);
+
+    tarjeta.appendChild(cardBody);
+
+    return tarjeta;
+  }
+
+  // Evento para cargar usuarios
+  botonCargar.addEventListener("click", () => {
+    fetch("https://jsonplaceholder.typicode.com/users")
+      .then(response => response.json())
+      .then(data => {
+        contenedorTarjetas20.innerHTML = ""; // Limpiar tarjetas anteriores
+        usuariosCargados = []; // Reiniciar array
+        data.forEach(usuario => {
+          const tarjeta = crearTarjeta(usuario);
+          contenedorTarjetas20.appendChild(tarjeta);
+          usuariosCargados.push(tarjeta);
+        });
+      })
+      .catch(error => console.error("Error al cargar usuarios:", error));
+  });
+
+  // Evento para clonar el último usuario mostrado
+  botonClonarUltimo.addEventListener("click", () => {
+    if (usuariosCargados.length === 0) {
+      alert("No hay usuarios para clonar. Primero carga usuarios.");
+      return;
+    }
+    const ultimo = usuariosCargados[usuariosCargados.length - 1];
+    const clon = ultimo.cloneNode(true);
+
+    // Reasignar el evento del botón eliminar en el clon
+    clon.querySelector(".btn-danger").addEventListener("click", () => {
+      clon.remove();
+    });
+
+    contenedorTarjetas20.appendChild(clon);
+    usuariosCargados.push(clon);
+  });
   </script>
 </body>
 </html>
